@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>jQuery Add Read More Link</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    var maxLength = 30;
+    $(".show-read-more").each(function(){
+        var myStr = $(this).text();
+        if($.trim(myStr).length > maxLength){
+            var newStr = myStr.substring(0, maxLength);
+            var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+            $(this).empty().html(newStr);
+            $(this).append(' <a href="javascript:void(0);" class="read-more">read more...</a>');
+            $(this).append('<span class="more-text">' + removedStr + '</span>');
+        }
+    });
+    $(".read-more").click(function(){
+        $(this).siblings(".more-text").contents().unwrap();
+        $(this).remove();
+    });
+});
+</script>
+<style type="text/css">
+    .show-read-more .more-text{
+        display: none;
+    }
+    p.nav {
+  text-align: right;
+
+}
+a{
+  text-decoration: none;
+}
+a:hover {
+  background-color: yellow;
+}
+
+#example4 {
+width: 200px;
+height: 133px;
+}
+.content{
+  max-width: 500px;
+  margin: auto;
+}
+
+</style>
+</head>
+<body>
+<p class="nav">
+ <a href="/logout/">Logout</a>
+ <a href='/post/'>Post</a>
+ <!-- <a href="#">Logout</a> -->
+</p>
+
+<!-- <h1>The padding Property</h1>
+
+<p class="ex1">This paragraph has a padding of 35 pixels on all four sides.</p>
+ -->
+<div class="content">
+    <h1>{{ name }} Post page</h1>   
+    {% for i in data %}
+    <div class="div1">
+        <div class="ex2">Title: {{ i.title }}</div>
+        <div class="ex2">Image: <img src="{{ i.image.url }}"id="example4" width="150" height="100"/></div>
+        <div class="ex2">Text:</div>
+        <div class="ex3"><p class="show-read-more">{{i.text}}.</p></div> 
+        <div class="ex2">User_Name: {{i.user }}</div>
+        <div class="ex2">Date: {{ i.date }}</div>
+        <div>id: {{i.id}}</div>
+        <div><a href='/delete_post/{{i.id}}'>Delete_post</a></div>
+
+        <br>
+        <br>
+    </div>
+    <br>
+    <br>
+    {% endfor %}
+    
+</div>    
+</body>
+</html>  

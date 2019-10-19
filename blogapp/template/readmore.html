@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>jQuery Add Read More Link</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    var maxLength = 30;
+    $(".show-read-more").each(function(){
+        var myStr = $(this).text();
+        if($.trim(myStr).length > maxLength){
+            var newStr = myStr.substring(0, maxLength);
+            var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+            $(this).empty().html(newStr);
+            $(this).append(' <a href="javascript:void(0);" class="read-more">read more...</a>');
+            $(this).append('<span class="more-text">' + removedStr + '</span>');
+        }
+    });
+    $(".read-more").click(function(){
+        $(this).siblings(".more-text").contents().unwrap();
+        $(this).remove();
+    });
+});
+</script>
+<style type="text/css">
+    .show-read-more .more-text{
+        display: none;
+    }
+.div1 {
+  width: 500px;
+  height: 300px;
+  border: 1px solid blue;
+  padding:30px;
+}
+div.ex3 {
+  text-align: center;
+  background-color: lightgrey;
+  width: 470px;
+  height: 50px;
+  overflow: auto;
+  border: 1px solid blue;
+}
+body{
+    background-color: white;
+    text-align: center;
+}
+p.ex2 {
+  margin: 35px;
+
+}
+div.ex2 {
+  padding:10px;
+}
+.content {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 10px;
+}
+ a:{
+  text-align: right;
+
+}
+p.nav{
+  text-decoration: none;
+}
+a:hover {
+  background-color: yellow;
+}
+</style>
+</head>
+<body>
+<nav>
+  <ul>
+    <p class="nav">
+      <a href="signup">Signup</a>
+      <a href="login">Login</a>
+    </p>
+  </ul>
+</nav>
+ <!-- <a href="#">Logout</a> -->
+</p>
+<center><h1>Home Page</h1></center>
+
+<!-- <h1>The padding p.nav  Property</h1>
+
+<p class="ex1">This paragraph has a padding of 35 pixels on all four sides.</p>
+ -->
+<aside>
+  <ul>
+    <li><a href='#'>create post</a></li>
+    <li><a href='#'>your posts</a></li>
+  </ul>
+</aside>
+
+<div class="content">   
+    {% for i in data %}
+    <div class="div1">
+        <div class="ex2">Title: {{ i.title }}</div>
+        <div class="ex2">Image: <img src="{{ i.image.url }}"id="example4" width="150" height="100"/></div>
+        <div class="ex2">Text:</div>
+        <div class="ex3"><p class="show-read-more">{{i.text}}.</p></div> 
+        <div class="ex2">User_Name: {{i.user }}</div>
+        <div class="ex2">Date: {{i.date }}</div>
+        <br>
+        <br>
+    </div>
+    <br>
+    <br>
+    {% endfor %}
+    
+</div>    
+</body>
+</html>  

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+{% for i in data %}
+{{i.text}}
+<div class="container">
+  <h2>Simple Collapsible</h2>
+  <p>Click on the button to toggle between showing and hiding content.</p>
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+  <div id="demo" class="collapse">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </div>
+</div>
+{% endfor %}
+
+</body>
+</html>
+
+  <!-- {% for i in data %}
+        Title: {{ i.title }}
+        Image: <img src="{{ i.image.url }}"id="example4"/>
+        User_Name: {{i.user }}
+        <div class="container">
+          <h2>Simple Collapsible</h2>
+          <p>Click on the button to toggle between showing and hiding content.</p>
+          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+          Title:
+          <div id="demo" class="collapse">{{i.title}}</div>
+        </div>
+
+        <br>
+        <br>
+  {% endfor %}
+ -->
+<!-- <div class="container">
+  <h2>Simple Collapsible</h2>
+  <p>Click on the button to toggle between showing and hiding content.</p>
+  {% for i in data %}
+        <div>Title: {{ i.title }}</div>
+        <div>Image: <img src="{{ i.image.url }}"id="example4"/></div>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+        <div id="demo" class="collapse">fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff{{i.text}}</div>
+        <div>Text: <p class="show-read-more">{{i.text}}.</p></div> 
+        <div>User_Name: {{i.user }}</div>
+        <br>
+        <br>
+  {% endfor %}
+
+  
+  </div> -->
+
+</body>
+</html>

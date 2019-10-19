@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HOME_PAGE</title>
+<style>
+
+p.nav {
+  text-align: right;
+
+}
+a{
+  text-decoration: none;
+}
+a:hover {
+  background-color: yellow;
+}
+
+#example4 {
+width: 200px;
+height: 133px;
+}
+.content{
+	max-width: 500px;
+	margin: auto;
+}
+</style>
+</head>
+<body>
+<p class="nav">
+ <a href="signup">Signup</a>
+ <a href="login">Login</a>
+ <a href="#">Logout</a>
+</p>
+<center><h1>Home Page</h1></center>
+{% block content %}
+{% endblock %}
+
+
+{% if data != None %}
+<div class="content"> 
+    {% for i in data %}
+        <div>Title: {{ i.title }}</div> 
+        <div>Image: <img src="{{ i.image.url }}"id="example4"/></div>
+        <div>Text: {{i.text}}</div> 
+        <div>User_Name: {{i.user }}</div>
+        <br>
+        <br>
+    {% endfor %}
+</div>
+{% else %}
+    <center><h1>Nodata</h1><center>
+{% endif %}
+
+</body>
+</html>
