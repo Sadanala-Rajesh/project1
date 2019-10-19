@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 from .forms import *
 
 def home(request):
+	"1111111111111111111111111111111111111111111111111111111"
 	if request.session.has_key('username'):
 		name = request.session['username']
 	else:
